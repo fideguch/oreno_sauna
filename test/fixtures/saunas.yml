@@ -1,0 +1,29 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sauna_name: MyString
+  picture: MyString
+  area: MyString
+  address: MyString
+  business_hours: MyString
+  phone: MyString
+  man_not_exist: false
+  woman_not_exist: false
+  man_sauna_temp: 1
+  woman_sauna_temp: 1
+  man_water_temp: 1
+  woman_water_temp: 1
+
+two:
+  sauna_name: MyString
+  picture: MyString
+  area: MyString
+  address: MyString
+  business_hours: MyString
+  phone: MyString
+  man_not_exist: false
+  woman_not_exist: false
+  man_sauna_temp: 1
+  woman_sauna_temp: 1
+  man_water_temp: 1
+  woman_water_temp: 1

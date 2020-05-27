@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>OrenoSauna</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div id="PC">
+    </div>
+    <div id="not_PC">
+      <header>
+        <% if saunner_signed_in? %>
+          <nav id="login-nav">
+          </nav>
+        <% else %>
+          <div id="blue-line"></div>
+          <nav id="not-login-nav">
+            <div class="nav-content">
+              <%# <a class="btn btn-primary f-1 blue-btn" href="#">ログイン</a> %>
+              <%= link_to "ログイン", new_saunner_session_path, class: "btn btn-primary f-1 blue-btn" %>
+              <%# <a class="btn btn-primary f-2 orange-btn" href="#">無料登録</a> %>
+              <%= link_to "無料登録", new_saunner_registration_path, class: "btn btn-primary f-1 orange-btn" %>
+            </div>
+          </nav>
+        <% end %>
+      </header>
+      <%= yield %>
+      <!-- footer -->
+      <footer id="footer">
+        <div id="sns-box">
+          <a class="fab fa-twitter f-1" href="#"></a>
+          <a class="fab fa-instagram f-2" href="#"></a>
+        </div>
+        <div id="content-1">
+          <a class="btn btn-primary f-1 orange-btn" href="#">利用規約</a>
+          <a class="btn btn-primary f-2 orange-btn" href="#">ご意見・ご要望</a>
+        </div>
+        <div id="content-1">
+          <a class="btn btn-primary f-3 orange-btn" href="#">プラバシーポリシー</a>
+        </div>
+        <div id="footer-logo">
+          <a href="#"><%= image_tag 'logo_white.png', height: '124.59', width: '206.22' %></a>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

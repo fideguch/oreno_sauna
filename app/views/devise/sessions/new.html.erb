@@ -1,0 +1,37 @@
+<h2 id="form-logo">
+  <a href="#"><%= image_tag 'logo.png', height: '135', width: '240' %></a>
+</h2>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <% if alert %>
+        <div class="alert alert-danger" role="alart">
+          ログインに失敗しました
+        </div>
+      <% end %>
+      <div class="form-container">
+      <div class="form-group">
+        <%= f.label :メールアドレス, class: "form-label" %>
+        <%= f.email_field :email, autofocus: true, class: 'form-control from-color', autocomplete: "email", placeholder: "メールアドレス" %>
+      </div>
+
+    <div class="form-group">
+      <%= f.label :パスワード, class: "form-label" %>
+      <%= f.password_field :password, class: 'form-control from-color', autocomplete: "current-password", placeholder: "パスワード" %>
+    </div>
+
+    <% if devise_mapping.rememberable? %>
+      <div class="form-check form-check-inline">
+        <%= f.check_box :remember_me, class: "form-check-input" %>
+        <%= f.label :パスワードを記憶する, class: "form-check-label form-label" %>
+      </div>
+    <% end %>
+
+    <div class="actions" style="margin: 16px 0;">
+      <%= f.submit "ログイン", class: "btn btn-primary blue-btn mx-auto d-block center-block" %>
+    </div>
+  <% end %>
+      <div class="actions" style="margin: 16px 0;">
+        <%= link_to(new_saunner_registration_path) do %>
+          <div class="btn btn-outline-info blue-noborder-btn d-block center-block">新規無料登録</div>
+        <% end %>
+      </div>
+    </div>

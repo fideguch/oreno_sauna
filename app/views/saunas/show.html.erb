@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Sauna name:</strong>
+  <%= @sauna.sauna_name %>
+</p>
+
+<p>
+  <strong>Picture:</strong>
+  <%= @sauna.picture %>
+</p>
+
+<p>
+  <strong>Area:</strong>
+  <%= @sauna.area %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @sauna.address %>
+</p>
+
+<p>
+  <strong>Business hours:</strong>
+  <%= @sauna.business_hours %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @sauna.phone %>
+</p>
+
+<p>
+  <strong>Man not exist:</strong>
+  <%= @sauna.man_not_exist %>
+</p>
+
+<p>
+  <strong>Woman not exist:</strong>
+  <%= @sauna.woman_not_exist %>
+</p>
+
+<p>
+  <strong>Man sauna temp:</strong>
+  <%= @sauna.man_sauna_temp %>
+</p>
+
+<p>
+  <strong>Woman sauna temp:</strong>
+  <%= @sauna.woman_sauna_temp %>
+</p>
+
+<p>
+  <strong>Man water temp:</strong>
+  <%= @sauna.man_water_temp %>
+</p>
+
+<p>
+  <strong>Woman water temp:</strong>
+  <%= @sauna.woman_water_temp %>
+</p>
+
+<%= link_to 'Edit', edit_sauna_path(@sauna) %> |
+<%= link_to 'Back', saunas_path %>

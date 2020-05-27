@@ -1,0 +1,109 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import "bootstrap";
+
+#not_PC {
+	display: none;
+}
+
+@media screen and (max-width: 1024px) {
+	#not_PC {
+		display: block;
+	}
+	#PC {
+		display: none;
+	}
+	//header
+	header {
+		height: 70px;
+		width: 100%;
+	}
+	#blue-line {
+		height: 6px;
+		width: 100%;
+		background-color: #1C75BC;
+	}
+	#not-login-nav {
+		.nav-content{
+			margin-right: 16px;
+			margin-left: auto;
+			display: flex;
+			padding-top: 16px;
+			width: 192px;
+		}
+		background-color: rgba(0,0,255,0);
+		height: 64px;
+		width: 100%;
+		font-size: 16px;
+	}
+	//footer
+	footer {
+		background-color: #1C75BC;
+		height: 289px;
+		width: 100%;
+		// justify-content: center;
+		font-weight: 500;
+	}
+	.f-1 {
+		margin-left: auto;
+		margin-right: 8px;
+	}
+	.f-2 {
+		margin-right: auto;
+		margin-left: 8px;
+	}
+	.f-3 {
+		margin-left: auto;
+		margin-right: auto;
+	}
+	#sns-box {
+		a {
+			position: relative;
+			display: block;
+			text-align: center;
+			color: #FFF;
+		}
+		padding-top: 16px;
+		height: 46px;
+		font-size: 30px;
+		color: #FFF;
+		display: flex;
+	}
+	#content-1 {
+		padding-top: 16px;
+		height: 46px;
+		font-size: 14px;
+		color: #FFF;
+		display: flex;
+	}
+	#footer-logo {
+		padding-top: 16px;
+		text-align: center;
+	}
+	//btn
+	.orange-btn {
+		background-color: #F9A638;
+		border: none;
+	}
+	.blue-btn {
+		background-color: #5CC0EF;
+		border: none;
+	}
+	.blue-noborder-btn {
+		color: #5CC0EF;
+		border: none;
+	}
+}

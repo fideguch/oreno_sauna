@@ -1,0 +1,39 @@
+<h2 id="form-logo">
+  <a href="#"><%= image_tag 'logo.png', height: '135', width: '240' %></a>
+</h2>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <% if @saunner.errors.any? %>
+      <div class="alert alert-danger" role="alart">
+        ユーザー登録に失敗しました
+      </div>
+    <% end %>
+    <div class="form-container">
+      <div class="form-group">
+        <%= f.label :メールアドレス, class: "form-label" %>
+        <%= f.email_field :email, autofocus: true, class: 'form-control from-color', autocomplete: "email", placeholder: "メールアドレス" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :パスワード, class: "form-label" %>
+        <%= f.password_field :password, class: 'form-control from-color', autocomplete: "new-password", placeholder: "パスワード" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :パスワード確認, class: "form-label" %>
+        <%= f.password_field :password_confirmation, class: 'form-control from-color', autocomplete: "new-password", placeholder: "パスワード確認" %>
+      </div>
+
+      <div style="color: #212529; margin: 16px 0; font-size: 12px;">
+        登録すると<a style="color: #1C75BC;" href="#">プライバシーポリシー</a>と<a style="color: #1C75BC;" href="#">利用規約</a>に同意したものとします。
+      </div>
+
+      <div class="actions">
+        <%= f.submit "無料登録", class: "btn btn-primary blue-btn mx-auto d-block center-block"%>
+      </div>
+  <% end %>
+      <div class="actions" style="margin: 16px 0;">
+        <%= link_to(new_saunner_session_path) do %>
+          <div class="btn btn-outline-info blue-noborder-btn d-block center-block">ログイン</div>
+        <% end %>
+      </div>
+    </div>

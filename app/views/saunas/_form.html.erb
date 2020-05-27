@@ -1,0 +1,77 @@
+<%= form_with(model: sauna, local: true) do |form| %>
+  <% if sauna.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(sauna.errors.count, "error") %> prohibited this sauna from being saved:</h2>
+
+      <ul>
+        <% sauna.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :sauna_name %>
+    <%= form.text_field :sauna_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :picture %>
+    <%= form.text_field :picture %>
+  </div>
+
+  <div class="field">
+    <%= form.label :area %>
+    <%= form.text_field :area %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address %>
+    <%= form.text_field :address %>
+  </div>
+
+  <div class="field">
+    <%= form.label :business_hours %>
+    <%= form.text_field :business_hours %>
+  </div>
+
+  <div class="field">
+    <%= form.label :phone %>
+    <%= form.text_field :phone %>
+  </div>
+
+  <div class="field">
+    <%= form.label :man_not_exist %>
+    <%= form.check_box :man_not_exist %>
+  </div>
+
+  <div class="field">
+    <%= form.label :woman_not_exist %>
+    <%= form.check_box :woman_not_exist %>
+  </div>
+
+  <div class="field">
+    <%= form.label :man_sauna_temp %>
+    <%= form.number_field :man_sauna_temp %>
+  </div>
+
+  <div class="field">
+    <%= form.label :woman_sauna_temp %>
+    <%= form.number_field :woman_sauna_temp %>
+  </div>
+
+  <div class="field">
+    <%= form.label :man_water_temp %>
+    <%= form.number_field :man_water_temp %>
+  </div>
+
+  <div class="field">
+    <%= form.label :woman_water_temp %>
+    <%= form.number_field :woman_water_temp %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
