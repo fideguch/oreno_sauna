@@ -7,6 +7,8 @@ gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem 'devise'
 gem 'devise-bootstrap-views'
+gem "refile", require: "refile/rails", github: 'manfe/refile'
+gem "refile-mini_magick"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.1'

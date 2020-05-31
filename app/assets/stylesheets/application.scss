@@ -15,6 +15,14 @@
  */
 @import "bootstrap";
 
+h1, .h1, h2, .h2, h3, .h3 {
+	margin: 0;
+}
+
+a:link, a:visited, a:hover, a:active {
+	color:#FFFFFF;
+}
+
 #not_PC {
 	display: none;
 }
@@ -74,19 +82,16 @@
 			position: relative;
 			display: block;
 			text-align: center;
-			color: #FFF;
 		}
 		padding-top: 16px;
 		height: 46px;
 		font-size: 30px;
-		color: #FFF;
 		display: flex;
 	}
 	#content-1 {
 		padding-top: 16px;
 		height: 46px;
 		font-size: 14px;
-		color: #FFF;
 		display: flex;
 	}
 	#footer-logo {

@@ -9,17 +9,17 @@
     <% end %>
     <div class="form-container">
       <div class="form-group">
-        <%= f.label :メールアドレス, class: "form-label" %>
+        <%= f.label :email, "メールアドレス", class: "form-label" %>
         <%= f.email_field :email, autofocus: true, class: 'form-control from-color', autocomplete: "email", placeholder: "メールアドレス" %>
       </div>
 
       <div class="form-group">
-        <%= f.label :パスワード, class: "form-label" %>
+        <%= f.label :password, "パスワード", class: "form-label" %>
         <%= f.password_field :password, class: 'form-control from-color', autocomplete: "new-password", placeholder: "パスワード" %>
       </div>
 
       <div class="form-group">
-        <%= f.label :パスワード確認, class: "form-label" %>
+        <%= f.label :password_confirmation, "パスワード再入力", class: "form-label" %>
         <%= f.password_field :password_confirmation, class: 'form-control from-color', autocomplete: "new-password", placeholder: "パスワード確認" %>
       </div>
 

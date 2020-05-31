@@ -7,21 +7,21 @@
           ログインに失敗しました
         </div>
       <% end %>
-      <div class="form-container">
+    <div class="form-container">
       <div class="form-group">
-        <%= f.label :メールアドレス, class: "form-label" %>
+        <%= f.label :email, "メールアドレス", class: "form-label" %>
         <%= f.email_field :email, autofocus: true, class: 'form-control from-color', autocomplete: "email", placeholder: "メールアドレス" %>
       </div>
 
     <div class="form-group">
-      <%= f.label :パスワード, class: "form-label" %>
+      <%= f.label :password, "パスワード", class: "form-label" %>
       <%= f.password_field :password, class: 'form-control from-color', autocomplete: "current-password", placeholder: "パスワード" %>
     </div>
 
     <% if devise_mapping.rememberable? %>
       <div class="form-check form-check-inline">
         <%= f.check_box :remember_me, class: "form-check-input" %>
-        <%= f.label :パスワードを記憶する, class: "form-check-label form-label" %>
+        <%= f.label :remember_me, "パスワードを記憶する", class: "form-check-label form-label" %>
       </div>
     <% end %>
 
