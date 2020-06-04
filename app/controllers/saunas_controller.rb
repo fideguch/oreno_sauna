@@ -28,7 +28,7 @@ class SaunasController < ApplicationController
 
     respond_to do |format|
       if @sauna.save
-        format.html { redirect_to @sauna, notice: 'Sauna was successfully created.' }
+        format.html { redirect_to @sauna, notice: '施設の登録に成功しました。' }
         format.json { render :show, status: :created, location: @sauna }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class SaunasController < ApplicationController
   def update
     respond_to do |format|
       if @sauna.update(sauna_params)
-        format.html { redirect_to @sauna, notice: 'Sauna was successfully updated.' }
+        format.html { redirect_to @sauna, notice: '施設の更新に成功しました。' }
         format.json { render :show, status: :ok, location: @sauna }
       else
         format.html { render :edit }

@@ -1,64 +1,191 @@
-<p id="notice"><%= notice %></p>
+<% unless notice.nil? then %>
+  <div class="alert alert-info" style="margin-bottom: 0px;" role="alert"><%= notice %></div>
+<% end %>
 
-<p>
-  <strong>Sauna name:</strong>
-  <%= @sauna.sauna_name %>
+<div id="spot_top_photo" class="w-100">
+  <%= image_tag @sauna.picture, class: "spot_photo" %>
+</div>
+
+<h2 style="font-weight: 700; font-size:24px; padding-top: 16px; padding-left:16px;">
+	<%= @sauna.sauna_name %>
+</h2>
+
+<p style="color: #868686; font-size:12px; padding-top: 8px; padding-left:16px;">
+	<%= @sauna.area %>駅
 </p>
 
-<p>
-  <strong>Picture:</strong>
-  <%= @sauna.picture %>
-</p>
+<%= link_to "サ活を報告する", new_saunner_session_path, class: "btn btn-primary orange-btn", style: "font-weight: 700; margin-left: 16px; margin-top: 6px;"%>
 
-<p>
-  <strong>Area:</strong>
-  <%= @sauna.area %>
-</p>
 
-<p>
-  <strong>Address:</strong>
-  <%= @sauna.address %>
-</p>
 
-<p>
-  <strong>Business hours:</strong>
-  <%= @sauna.business_hours %>
-</p>
+<% if @sauna.man_not_exist == false %>
+  <div style="font-weight: 700; font-size: 16px; color:#5CC0EF; padding-top: 16px; padding-left: 16px;">男湯</div>
 
-<p>
-  <strong>Phone:</strong>
-  <%= @sauna.phone %>
-</p>
+  <div style="width: 100%; height: 56px; display: flex; margin-top: 8px;">
+    <div class="sauna_box">
+      <div class="box_content content_top">
+        サウナ
+      </div>
+      <div class="box_content content_bottom">
+        <% unless @sauna.man_sauna_temp.nil? then %>
+          <%= @sauna.man_sauna_temp %>度
+        <% else %>
+          -
+        <% end %>
+      </div>
+    </div>
+    <div class="water_box">
+      <div class="box_content content_top">
+        水風呂
+      </div>
+      <div class="box_content content_bottom">
+        <% unless @sauna.man_water_temp.nil? then %>
+          <%= @sauna.man_water_temp %>度
+        <% else %>
+          -
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
 
-<p>
-  <strong>Man not exist:</strong>
-  <%= @sauna.man_not_exist %>
-</p>
 
-<p>
-  <strong>Woman not exist:</strong>
-  <%= @sauna.woman_not_exist %>
-</p>
 
-<p>
-  <strong>Man sauna temp:</strong>
-  <%= @sauna.man_sauna_temp %>
-</p>
+<% if @sauna.woman_not_exist == false %>
+  <div style="font-weight: 700; font-size: 16px; color: #F9A638CC; padding-top: 16px; padding-left: 16px;">女湯</div>
 
-<p>
-  <strong>Woman sauna temp:</strong>
-  <%= @sauna.woman_sauna_temp %>
-</p>
+  <div class="sauna_water_container">
+    <div class="sauna_box">
+      <div class="box_content content_top">
+        サウナ
+      </div>
+      <div class="box_content content_bottom">
+        <% unless @sauna.woman_sauna_temp.nil? then %>
+          <%= @sauna.woman_sauna_temp %>度
+        <% else %>
+          -
+        <% end %>
+      </div>
+    </div>
+    <div class="water_box">
+      <div class="box_content content_top">
+        水風呂
+      </div>
+      <div class="box_content content_bottom">
+        <% unless @sauna.woman_water_temp.nil? then %>
+          <%= @sauna.woman_water_temp %>度
+        <% else %>
+          -
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
 
-<p>
-  <strong>Man water temp:</strong>
-  <%= @sauna.man_water_temp %>
-</p>
 
-<p>
-  <strong>Woman water temp:</strong>
-  <%= @sauna.woman_water_temp %>
-</p>
 
-<%= link_to 'Edit', edit_sauna_path(@sauna) %> |
-<%= link_to 'Back', saunas_path %>
+<div class="sauna_data">
+  <div style="padding: 8px;">
+    <p class="us" style="width: 100%; text-align: center; margin-bottom: 24px;">[基本情報]</p>
+    <div style="width: 100%; display: flex; margin-bottom: 8px; line-height: 1.8em;">
+      <div class="title us">
+        住所
+      </div>
+      <div class="content us" style="word-wrap: break-word;">
+        <% unless @sauna.address == "" then %>
+          <%= @sauna.address %>
+        <% else %>
+          施設情報の更新にご協力お願いいたします。
+        <% end %>
+      </div>
+    </div>
+    <div style="border :solid 1px #868686;"></div>
+    <div style="width: 100%; display: flex; margin: 8px 0 8px 0; line-height: 1.8em;">
+      <div class="title us">
+        TEL
+      </div>
+      <div class="content us" style="word-wrap: break-word;">
+        <% unless @sauna.phone == "" then %>
+          <%= @sauna.phone %>
+        <% else %>
+          施設情報の更新にご協力お願いいたします。
+        <% end %>
+      </div>
+    </div>
+    <div style="border :solid 1px #868686;"></div>
+    <div style="width: 100%; display: flex; margin-top: 8px; line-height: 1.8em;">
+      <div class="title us">
+        営業時間
+      </div>
+      <div class="content us" style="word-wrap: break-word;">
+        <% unless @sauna.business_hours == "" then %>
+          <%= @sauna.business_hours %>
+        <% else %>
+          施設情報の更新にご協力お願いいたします。
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="margin: 16px auto; width: 178px; height:38px;">
+  <%= link_to "この施設情報を更新する", edit_sauna_path(@sauna), class: "btn btn-default orange-btn", style: "font-weight: 700;"%>
+</div>
+
+<div class="sakatsu-box">
+  <%# <% if @sakatsu.index(i) == 0 %>
+  <div style="font-weight: 700; font-size:16px; margin-bottom: 16px;">
+    新着サ活報告
+  </div>
+  <%# <% end %>
+
+  <div class="profile">
+    <div class="saunner-image">
+    </div>
+    <div class="saunner-name">
+       ふみふみ
+    </div>
+  </div>
+
+  <div style="font-size:12px; padding-top: 8px;">
+	  渋谷駅
+  </div>
+
+  <h3 style="font-weight: 700; font-size: 18px; padding-top: 8px;">
+	  改良湯
+  </h3>
+
+  <div class="sauna_water_container">
+    <div class="sauna_box">
+      <div class="box_content content_top">
+        サウナ
+      </div>
+      <div class="box_content content_bottom">
+        80点
+      </div>
+    </div>
+    <div class="water_box">
+      <div class="box_content content_top">
+        水風呂
+      </div>
+      <div class="box_content content_bottom">
+        80点
+      </div>
+    </div>
+  </div>
+
+  <div class="comment-title">
+    ととのいました。
+  </div>
+
+  <div class="comment">
+    1週間に1回はいくようにしています。
+    水風呂がキンキンに冷えているので、休憩の時に完全に飛ぶことができます。
+    最近人が増えてサウナに行列ができ気味です。
+  </div>
+
+  <div class="sakatsu-top-photo w-100">
+    <%= image_tag 'test.jpg', class: "sakatsu-photo" %>
+  </div>
+
+</div>

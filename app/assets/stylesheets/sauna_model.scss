@@ -1,0 +1,69 @@
+//以下newページ
+.set_temp {
+	padding-top: 10px;; margin-bottom: -10px; font-size: 16px; color: #212529; display: block; padding-left: 8px; font-weight: 700 !important;
+}
+.form-orange-btn {
+	background-color: #F9A638 !important;
+	border-color: #F9A638 !important;
+}
+
+//以下showページ
+#spot_top_photo {
+	height: 240px;
+}
+.spot_photo {
+	width: 100%;
+	height: 240px;
+	object-fit: cover;
+}
+.sauna_water_container {
+	width: 100%;
+	height: 56px;
+	display: flex;
+	margin-top: 8px;
+}
+.sauna_box {
+	width: 96px;
+	height: 56px;
+	background-color: #F9A638;
+	margin: 0 20px 0 auto;
+	border-radius: 5px;
+}
+.water_box {
+	width: 96px;
+	height: 56px;
+	background-color: #5CC0EF;
+	margin: 0 auto 0 20px;
+	border-radius: 5px;
+}
+.box_content {
+	text-align: center;
+	color: #FFFFFF;
+}
+.content_top {
+	font-size: 16px;
+	margin-top: 3px;
+}
+.content_bottom {
+	font-size: 18px;
+	margin-top: 1px;
+}
+//詳細 基本情報
+.sauna_data {
+	margin: 16px auto 0 auto;
+	width: 85%;
+	border-radius: 5px;
+	background-color: #C8C8C8;
+	color :#FFFFFF;
+	font-size: 14px;
+	.us {
+		margin: 0;
+	}
+	.title {
+		width: 30%;
+
+	}
+	.content {
+		width: 70%;
+	}
+}
