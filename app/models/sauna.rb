@@ -2,6 +2,8 @@ class Sauna < ApplicationRecord
 	before_create :default_picture
 	has_one_attached :picture
 
+	include SearchFacility
+
 	# photoのデフォルト画像を設定
 	def default_picture
 		if !self.picture.attached?

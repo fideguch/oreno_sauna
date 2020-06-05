@@ -1,0 +1,11 @@
+<div class="search_name_box">
+	<h2 style="font-weight: 700; font-size: 18px; margin-bottom: 16px;">
+		施設名で検索
+	</h2>
+	<form action="<%= search_facility_path %>" method="get" style="display: flex;">
+		<input type="text" style="margin-right: 8px;" class="form-control" placeholder="施設名を入力" type="text" name="name_query" value="<% request[:name_query] %>">
+		<button class="btn btn-primary orange-btn" type="submit">検索</button>
+	</form>
+</div>
+
+<%= render 'search', sauna: @sauna %>

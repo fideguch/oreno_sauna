@@ -92,7 +92,7 @@
         住所
       </div>
       <div class="content us" style="word-wrap: break-word;">
-        <% unless @sauna.address == "" then %>
+        <% unless @sauna.address.empty? then %>
           <%= @sauna.address %>
         <% else %>
           施設情報の更新にご協力お願いいたします。
@@ -105,7 +105,7 @@
         TEL
       </div>
       <div class="content us" style="word-wrap: break-word;">
-        <% unless @sauna.phone == "" then %>
+        <% unless @sauna.phone.empty? then %>
           <%= @sauna.phone %>
         <% else %>
           施設情報の更新にご協力お願いいたします。
@@ -118,7 +118,7 @@
         営業時間
       </div>
       <div class="content us" style="word-wrap: break-word;">
-        <% unless @sauna.business_hours == "" then %>
+        <% unless @sauna.business_hours.empty? then %>
           <%= @sauna.business_hours %>
         <% else %>
           施設情報の更新にご協力お願いいたします。
@@ -133,7 +133,7 @@
 </div>
 
 <div class="sakatsu-box">
-  <%# <% if @sakatsu.index(i) == 0 %>
+  <%# <% if @sakatsu.index(form) == 0 %>
   <div style="font-weight: 700; font-size:16px; margin-bottom: 16px;">
     新着サ活報告
   </div>

@@ -1,0 +1,59 @@
+<% if sauna.size == 0 %>
+	<div style="height: 350px; font-weight: 700; font-size: 18px; margin: 16px;">
+		ヒットする施設はありませんでした。。。
+	</div>
+<% end %>
+<% sauna.each do |form| %>
+		<div style="padding: 16px; border-bottom: solid #C8C8C8 1px;">
+			<% if sauna.index(form) == 0 %>
+				<div style="font-weight: 700; font-size: 18px; margin-bottom: 32px;">
+					検索結果
+				</div>
+			<% end %>
+		<%= link_to(sauna_path(form)) do %>
+			<h2 style="color: #212529; font-weight: 700; font-size: 16px; margin-bottom: 8px;">
+				<%= form.sauna_name %>
+			</h2>
+
+			<p style="color: #868686; font-size:12px; margin-bottom: 8px;">
+				<%= form.area %>駅
+			</p>
+
+			<div style="color: #212529; font-weight: 700; margin-top: 8px; font-size: 16px">
+				サ活報告数8件
+			</div>
+
+			<div style="width: 100%; height: 200px; margin-right: 16px;">
+				<%= image_tag form.picture, class: "search_spot_photo" %>
+			</div>
+			<div>
+				<div style="height: 56px; display: flex; margin-top: 8px;">
+					<div class="sauna_box">
+						<div class="box_content content_top">
+							サウナ
+						</div>
+						<div class="box_content content_bottom">
+							<% unless form.man_sauna_temp.nil? then %>
+							<%= form.man_sauna_temp %>度
+							<% else %>
+							-
+							<% end %>
+						</div>
+					</div>
+					<div class="water_box">
+						<div class="box_content content_top">
+							水風呂
+						</div>
+						<div class="box_content content_bottom">
+							<% unless form.man_water_temp.nil? then %>
+							<%= form.man_water_temp %>度
+							<% else %>
+							-
+							<% end %>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	<% end %>
+<% end %>

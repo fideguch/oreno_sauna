@@ -61,6 +61,17 @@ class SaunasController < ApplicationController
     end
   end
 
+  def search_area
+    @sauna = Sauna.all
+    @areas = Sauna.find_by_sql("SELECT DISTINCT area FROM saunas")
+    @sauna = @sauna.search_sauna(facility_area_query: params[:area_query]) if params[:area_query].present?
+  end
+
+  def search_name
+    @sauna = Sauna.all
+    @sauna = @sauna.search_sauna(facility_name_query: params[:name_query]) if params[:name_query].present?
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_sauna
