@@ -71,6 +71,7 @@ class SaunasController < ApplicationController
   def search_area
     @sauna = Sauna.page(params[:page]).per(SEARCHPER)
     @areas = Area.select(:area_name).distinct(:area_name)
+    @reports = Report.all
     if params[:area_query].present?
       @sauna = Sauna.all.search_sauna(facility_area_query: params[:area_query])
       @sauna = Kaminari.paginate_array(@sauna).page(params[:page]).per(SEARCHPER)
@@ -79,6 +80,8 @@ class SaunasController < ApplicationController
 
   def search_name
     @sauna = Sauna.page(params[:page]).per(SEARCHPER)
+    @areas = Area.all
+    @reports = Report.all
     if params[:name_query].present?
       @sauna = @sauna.search_sauna(facility_name_query: params[:name_query])
       @sauna = Kaminari.paginate_array(@sauna).page(params[:page]).per(SEARCHPER)

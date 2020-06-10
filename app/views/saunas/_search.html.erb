@@ -3,7 +3,7 @@
 		ヒットする施設はありませんでした。。。
 	</div>
 <% end %>
-<% sauna.each do |form| %>
+<% @sauna.each do |form| %>
 		<div style="padding: 16px; border-bottom: solid #C8C8C8 1px;">
 			<% if sauna.index(form) == 0 %>
 				<div style="font-weight: 700; font-size: 18px; margin-bottom: 32px;">
@@ -16,12 +16,12 @@
 			</h2>
 
 			<p style="color: #868686; font-size:12px; margin-bottom: 8px;">
-				<%= form.area.area_name %>駅
+				<%= @areas.find_by(sauna_id: form.id).area_name %>駅
 			</p>
 
 			<div style="color: #212529; font-weight: 700; margin-top: 8px; font-size: 16px">
 				サ活報告数
-				<% count = Report.where(sauna_id: form.id).count %>
+				<% count = @reports.where(sauna_id: form.id).count %>
 				<%= count %>
 				件
 			</div>
@@ -37,7 +37,7 @@
 						</div>
 						<div class="box_content content_bottom">
 							<% unless count == 0 then %>
-								<%= point_s = Report.where(sauna_id: form.id).average(:sauna_rate).to_i %>
+								<%= point_s = @reports.where(sauna_id: form.id).average(:sauna_rate).to_i %>
 								点
 							<% else %>
 								-
@@ -50,7 +50,7 @@
 						</div>
 						<div class="box_content content_bottom">
 							<% unless count == 0 then %>
-								<%= point_w = Report.where(sauna_id: form.id).average(:water_bath_rate).to_i %>
+								<%= point_w = @reports.where(sauna_id: form.id).average(:water_bath_rate).to_i %>
 								点
 							<% else %>
 								-

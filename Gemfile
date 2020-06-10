@@ -16,7 +16,7 @@ gem 'kaminari'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.1'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', group: :development
+gem 'sqlite3', '~> 1.4', group: :development
 gem 'pg', group: :production
 # Use Puma as the app server
 gem 'puma', '~> 4.1'

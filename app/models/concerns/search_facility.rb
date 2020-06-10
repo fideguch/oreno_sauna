@@ -8,8 +8,8 @@ module SearchFacility
 		}
 
 		scope :search_by_station, proc { |station_query|
-			area_data = Area.select("id").where(area_name: station_query)
-			sauna_data = Sauna.where(id: area_data)
+			# area_data = Area.select("area_name").where(area_name: station_query)
+			Sauna.joins(:area).where("areas.area_name = ?", station_query)
 
 			# reportの個数を持ってきたかったがうまくいかなかった。
 			# sauna_data = Sauna.left_joins(:reports).where(id: area_data)
