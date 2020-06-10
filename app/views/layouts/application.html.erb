@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>OrenoSauna</title>
+    <title>俺のサウナ</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+
+    <meta name=”description” content=”俺のサウナは、サウナーが作るサウナ施設コミュニティです。サ活に行った施設を登録し、あなたの体験を「一言」で教えてください！サウナの良さを世の中に広げましょう。”>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
 
@@ -17,7 +19,8 @@
   <body>
     <div id="PC">
       <%= image_tag 'logo.png', height: '135', width: '240', style: "display: block; margin: 80px auto 0 auto;"%>
-      <div style="text-align: center; font-weight: 700; margin: 80px auto 0 auto;">
+      <%= image_tag 'qr_bata.png', style: "display: block; margin: 20px auto 0 auto;" %>
+      <div style="text-align: center; font-weight: 700; margin: 20px auto 0 auto;">
         俺のサウナ はスマートフォン限定のコンテンツです。 <br>お使いのスマートフォンで上記のQRコードを読み取り、アクセスして下さい。
       </div>
     </div>
