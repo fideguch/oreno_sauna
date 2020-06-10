@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sauna_rate: 1
+  water_bath_rate: 1
+  title: MyString
+  comment: MyText
+  sakatsu_photo: MyString
+  saunner: one
+  sauna: one
+
+two:
+  sauna_rate: 1
+  water_bath_rate: 1
+  title: MyString
+  comment: MyText
+  sakatsu_photo: MyString
+  saunner: two
+  sauna: two

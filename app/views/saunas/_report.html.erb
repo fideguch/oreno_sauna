@@ -1,0 +1,81 @@
+<% reports.each do |f| %>
+	<div class="sakatsu-box-index">
+		<% if reports.index(f) == 0 %>
+			<div style="font-weight: 700; font-size:16px; margin-bottom: 16px;">
+				新着サ活報告
+			</div>
+		<% end %>
+			<% if saunner_signed_in? %>
+				<%= link_to(saunner_path(f.saunner_id)) do %>
+					<div class="profile">
+							<% if f.saunner.saunner_image.attached? %>
+								<%= image_tag f.saunner.saunner_image, class: "saunner-photo-profile-report" %>
+							<% else %>
+								<div class="saunner-image">
+								</div>
+							<% end %>
+						<div class="saunner-name">
+							<%= f.saunner.user_name %>
+						</div>
+					</div>
+				<% end %>
+			<% else %>
+				<div type="button" class="profile" data-toggle="modal" data-target="#exampleModal3">
+						<% if f.saunner.saunner_image.attached? %>
+							<%= image_tag f.saunner.saunner_image, class: "saunner-photo-profile-report" %>
+						<% else %>
+							<div class="saunner-image">
+							</div>
+						<% end %>
+					<div class="saunner-name">
+						<%= f.saunner.user_name %>
+					</div>
+				</div>
+				<%= render 'modal' %>
+			<% end %>
+			<%= link_to(sauna_path(f.sauna_id)) do %>
+				<div style="font-size:12px; padding-top: 8px; color: #868686">
+					<%= @areas.find_by(sauna_id: f.sauna_id).area_name %>
+				</div>
+
+				<h3 style="color: #212529; font-weight: 700; font-size: 18px; padding-top: 8px;">
+					<%= f.sauna.sauna_name %>
+				</h3>
+
+				<div class="sauna_water_container">
+					<div class="sauna_box">
+						<div class="box_content content_top">
+						サウナ
+						</div>
+						<div class="box_content content_bottom">
+						<%= f.sauna_rate %>点
+						</div>
+					</div>
+					<div class="water_box">
+							<div class="box_content content_top">
+								水風呂
+							</div>
+							<div class="box_content content_bottom">
+								<%= f.water_bath_rate %>点
+							</div>
+					</div>
+				</div>
+
+				<div class="comment-title">
+					<%= f.title %>
+				</div>
+
+				<% unless f.comment.blank? then %>
+					<div class="comment">
+						<%= f.comment %>
+					</div>
+				<% end %>
+
+				<% if f.sakatsu_photo.attached? %>
+					<div class="sakatsu-top-photo w-100">
+						<%= image_tag f.sakatsu_photo, class: "sakatsu-photo" %>
+					</div>
+				<% end %>
+			<% end %>
+		</div>
+<% end %>

@@ -1,0 +1,41 @@
+<% if @saunner.errors.any? %>
+	<div class="alert alert-danger" role="alart">
+	送信に失敗しました。<br>
+	<% @saunner.errors.full_messages.each do |message| %>
+		<li><%= message %></li>
+	<% end %>
+	入力内容を再度ご確認下さい。
+	</div>
+<% end %>
+
+<div style="padding: 16px; height:160px width: 100%; font-size: 16px; border-bottom: solid 1px #C8C8C8;">
+	<div style="font-weight: 700;">
+		プロフィール編集
+	</div>
+	<div style="margin-top: 16px; margin-right: auto; margin-left: auto;" class="saunner-image-devise">
+		<% if @saunner.saunner_image.attached? %>
+			<%= image_tag @saunner.saunner_image, class: "saunner-photo-profile" %>
+		<% end %>
+	</div>
+	<div style="font-weight: 700; margin-top: 16px; text-align: center">
+		<%= @saunner.user_name %>
+	</div>
+</div>
+
+<div style="height: 330px; padding: 16px; 32px; font-size: 16px;">
+	<div class="form-container" style="height: 330px; padding: 16px; 32px; font-size: 16px;">
+		<%= form_with(model: @saunner, local: true) do |form| %>
+			<div class="form-group">
+				<%= form.label :saunner_image, "プロフィール画像変更", class: "form-label" %>
+				<%= form.file_field :saunner_image, class: "filestyle", "data-text": "ファイル選択", 'data-btnClass': "btn btn-primary form-orange-btn" %>
+			</div>
+			<div class="form-group">
+				<%= form.label :user_name, "ニックネーム変更", class: "form-label" %>
+				<%= form.text_field :user_name, autofocus: true, class: 'form-control', placeholder: "10文字以下" %>
+			</div>
+			<div class="actions">
+				<%= form.submit "送信する", style: "margin-bottom: 16px;", class: "btn btn-primary blue-btn mx-auto d-block center-block" %>
+			</div>
+		<% end %>
+	</div>
+</div>

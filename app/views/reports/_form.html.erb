@@ -1,0 +1,53 @@
+<%= form_with(model: [sauna, report], local: true) do |form| %>
+  <% if report.errors.any? %>
+    <div class="alert alert-danger" role="alart" style="margin-top: 20px;">
+      送信に失敗しました。<br>
+    <% report.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+    <% end %>
+      入力内容を再度ご確認下さい。
+    </div>
+  <% end %>
+
+  <div class="form-container">
+    <div class="form-group">
+      <div style="font-weight: 700;">施設</div>
+      <div style="color: #212529; font-weight: 700; margin: 16px auto 16px 16px"><%= sauna.sauna_name %></div>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :sauna_rate, "サウナの点数は？（0〜100）", class: "form-label" %>
+        <div style="display: flex; padding-right: 216px;">
+          <%= form.number_field :sauna_rate, autofocus: true, class: "form-control", placeholder: "100" %>
+          <p class="set_temp">点</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :water_bath_rate, "水風呂の点数は？（0〜100）", class: "form-label" %>
+        <div style="display: flex; padding-right: 216px;">
+          <%= form.number_field :water_bath_rate, autofocus: true, class: "form-control", placeholder: "100" %>
+          <p class="set_temp">点</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :sakatsu_photo, "サ活画像", class: "form-label" %>
+      <%= form.file_field :sakatsu_photo, class: "filestyle", "data-text": "ファイル選択", 'data-btnClass': "btn btn-primary form-orange-btn" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :title, "今回のサ活を一言で表すと？", class: "form-label" %>
+      <%= form.text_field :title, autofocus: true, class: 'form-control', placeholder: "15文字以内" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :comment, "コメント", class: "form-label" %>
+      <%= form.text_area :comment, autofocus: true, class: 'form-control', style: "resize: none;", placeholder: "75文字以内", rows: "5" %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit "送信する", style: "margin-bottom: 16px;", class: "btn btn-primary blue-btn mx-auto d-block center-block" %>
+    </div>
+<% end %>
+</div>

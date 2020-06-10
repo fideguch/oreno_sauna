@@ -5,7 +5,7 @@
 	<div style="display: flex; flex-wrap: wrap;">
 		<% @areas.each do |f| %>
 			<form action="<%= search_area_path %>" method="get">
-				<input name="area_query" value="<%= f.area %>" style="margin: 0 8px 16px 0; color: #FFFFFF;" class="btn blue-btn" type="submit">
+				<input name="area_query" value="<%= f.area_name %>" style="margin: 0 8px 16px 0; color: #FFFFFF;" class="btn blue-btn" type="submit">
 			</form>
 		<% end %>
 	</div>

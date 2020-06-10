@@ -23,12 +23,12 @@ a:link, a:visited, a:hover, a:active {
 	color:#FFFFFF;
 }
 
-#not_PC {
+#Others {
 	display: none;
 }
 
 @media screen and (max-width: 1024px) {
-	#not_PC {
+	#Others {
 		display: block;
 	}
 	#PC {
@@ -57,6 +57,19 @@ a:link, a:visited, a:hover, a:active {
 		width: 100%;
 		font-size: 16px;
 	}
+	#login-nav {
+		height: 70px;
+		background-color: #1C75BC;
+		display: flex;
+		.nav-content{
+			margin-right: 16px;
+			margin-left: auto;
+			margin-top: 20px;
+			margin-bottom: 20px;
+			display: flex;
+			width: 142px;
+		}
+	}
 	//footer
 	footer {
 		background-color: #1C75BC;
@@ -76,6 +89,10 @@ a:link, a:visited, a:hover, a:active {
 	.f-3 {
 		margin-left: auto;
 		margin-right: auto;
+	}
+	.f-4 {
+		margin-left: 8px;
+		margin-right: 8px;
 	}
 	#sns-box {
 		a {
@@ -112,4 +129,67 @@ a:link, a:visited, a:hover, a:active {
 		color: #5CC0EF;
 		border: none;
 	}
+}
+
+.sakatsu-box-index {
+	width: 100%;
+	padding: 16px;
+	border-top: solid 1px #C8C8C8;
+	.profile {
+		display: flex;
+		height: 32px;
+	}
+	.saunner-image {
+		border-radius: 50%;
+		height: 32px;
+		width: 32px;
+		border:  solid 1px #707070;
+		background-size: cover;
+		background-position: center;
+		background-image: url("<%= asset_path('user_no_image.jpg')%>");
+	}
+	.saunner-name {
+		margin-left: 8px;
+		line-height: 32px;
+		font-size: 14px;
+		color: #212529;
+	}
+	.comment-title {
+		font-size: 18px;
+		margin-top: 8px;
+		font-weight: 700;
+		color: #212529;
+	}
+	.comment {
+		margin-top: 8px;
+		font-size: 14px;
+		word-wrap: break-word;
+		line-height: 1.5em;
+		color: #212529;
+	}
+	.sakatsu-top-photo {
+		margin-top: 8px;
+		height: 200px;
+		margin-top: 8px;
+	}
+	.sakatsu-photo {
+		width: 100%;
+		height: 200px;
+		object-fit: cover;
+		border-radius: 5px;
+	}
+}
+
+.pagination {
+  justify-content: center;
+}
+
+.policy-container {
+	padding: 16px;
+	width: 100%;
+}
+.policy-text {
+	line-height: 1.5;
+	font-size: 14px;
+	font-weight: 700;
 }

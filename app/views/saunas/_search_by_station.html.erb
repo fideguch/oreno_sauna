@@ -1,0 +1,15 @@
+<div class="search_area_box">
+	<h2 style="font-weight: 700; font-size: 18px; margin-bottom: 16px;">
+		施設の最寄駅で検索
+	</h2>
+	<div style="display: flex; flex-wrap: wrap;">
+		<% @areas.each do |f| %>
+			<form action="<%= search_area_path %>" method="get">
+				<input name="area_query" value="<%= f.area_name %>" style="margin: 0 8px 16px 0; color: #FFFFFF;" class="btn blue-btn" type="submit">
+			</form>
+		<% end %>
+	</div>
+	<div style="text-align: right; font-size: 14px; color: #212529;">
+		※登録施設が0件の駅は表示されません。
+	</div>
+</div>

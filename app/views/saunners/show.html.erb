@@ -1,0 +1,109 @@
+<div style="display: flex; width: 100%; height: 104px; border-bottom: solid 1px #C8C8C8;">
+	<div style="margin-top: 16px; margin-right: 43px; margin-left: auto;" class="saunner-image-devise">
+		<% if @saunner.saunner_image.attached? %>
+			<%= image_tag @saunner.saunner_image, class: "saunner-photo-profile" %>
+		<% end %>
+	</div>
+	<div style="font-weight: 700; margin-top: 32px; margin-right: auto; margin-left: 43px; font-size: 16px;">
+		<div><%= @saunner.user_name %></div>
+		<div>俺のサ活：<%= @reports.length %>件</div>
+	</div>
+</div>
+
+<% if @saunner == current_saunner %>
+	<div style="padding-top: 8px; font-weight: 700; display: flex; width: 375px; height: 48px;">
+		<%= link_to 'プロフィール編集', edit_saunner_path, method: :get, style: "height: 32px;", class: "btn btn-primary f-1 blue-btn", data: {"turbolinks" => false} %>
+		<%= link_to 'ログアウト', destroy_saunner_session_path, method: :delete, style: "height: 32px;", class: "btn btn-primary f-2 orange-btn", data: { confirm: 'ログアウトしますか?' } %>
+	</div>
+<% end %>
+
+<% if @reports.blank? %>
+	<div style="height: 350px; font-weight: 700; font-size: 18px; margin: 16px;">
+		まだサ活の報告がありません。
+	</div>
+	<% if @saunner == current_saunner %>
+		<div class="search_name_box" style="border-bottom: none;">
+			<h2 style="font-weight: 700; font-size: 18px; margin-bottom: 16px;">
+				早速行ったサウナを記録してみよう！
+			</h2>
+			<form action="<%= search_facility_path %>" method="get" style="display: flex;">
+				<input type="text" style="margin-right: 8px;" class="form-control" placeholder="施設名を入力" type="text" name="name_query" value="<% request[:name_query] %>">
+				<button class="btn btn-primary orange-btn" type="submit">検索</button>
+			</form>
+		</div>
+	<% end %>
+<% else %>
+	<% @reports.each do |f| %>
+		<div class="sakatsu-box-index">
+			<% if @reports.index(f) == 0 %>
+				<div style="font-weight: 700; font-size:16px; margin-bottom: 16px;">
+					新着サ活報告
+				</div>
+			<% end %>
+			<%= link_to(sauna_path(f.sauna_id)) do %>
+			<% $num = f.id %>
+				<div class="profile">
+					<% if f.saunner.saunner_image.attached? %>
+						<%= image_tag f.saunner.saunner_image, class: "saunner-photo-profile-report" %>
+					<% else %>
+						<div class="saunner-image">
+						</div>
+					<% end %>
+					<div class="saunner-name">
+						<%= f.saunner.user_name %>
+					</div>
+				</div>
+
+				<div style="font-size:12px; padding-top: 8px; color: #868686">
+					<%= @areas.find_by(sauna_id: f.sauna_id).area_name %>
+				</div>
+
+				<h3 style="color: #212529; font-weight: 700; font-size: 18px; padding-top: 8px;">
+					<%= f.sauna.sauna_name %>
+				</h3>
+
+				<div class="sauna_water_container">
+					<div class="sauna_box">
+						<div class="box_content content_top">
+						サウナ
+						</div>
+						<div class="box_content content_bottom">
+						<%= f.sauna_rate %>点
+						</div>
+					</div>
+					<div class="water_box">
+						<div class="box_content content_top">
+							水風呂
+						</div>
+						<div class="box_content content_bottom">
+							<%= f.water_bath_rate %>点
+						</div>
+					</div>
+				</div>
+
+				<div class="comment-title">
+					<%= f.title %>
+				</div>
+
+				<% unless f.comment.blank? then %>
+					<div class="comment">
+						<%= f.comment %>
+					</div>
+				<% end %>
+
+				<% if f.sakatsu_photo.attached? %>
+					<div class="sakatsu-top-photo w-100">
+						<%= image_tag f.sakatsu_photo, class: "sakatsu-photo" %>
+					</div>
+				<% end %>
+			<% end %>
+			<% if @saunner == current_saunner %>
+				<div style="height: 32px; width: 100%; margin-top: 16px;">
+				<%= button_to '削除する', "/saunas/#{f.sauna_id}/reports/#{$num}", method: :delete, style: "margin-left: 76.5%;",
+				class: "btn orange-btn", data: { confirm: '本当に削除しますか?' } %>
+				</div>
+			<% end %>
+		</div>
+	<% end %>
+<% end %>
+<%= paginate @reports %>

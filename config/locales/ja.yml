@@ -1,0 +1,22 @@
+ja:
+  activerecord:
+    attributes:
+      sauna:
+        sauna_name: 施設名
+        picture: 投稿画像
+        address: 施設の住所
+        business_hours: 営業時間
+        phone: 電話番号
+        man_sauna_temp: 男性のサウナ温度
+        woman_sauna_temp: 女性のサウナ温度
+        man_water_temp: 男性の水風呂温度
+        woman_water_temp: 女性の水風呂温度
+      report:
+        sauna_rate: サウナの点数
+        water_bath_rate: 水風呂の点数
+        title: サ活の一言
+        comment: サ活のコメント
+        sakatsu_photo: サ活の画像
+      area:
+        area_name: 駅名
+

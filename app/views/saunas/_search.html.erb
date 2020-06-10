@@ -16,11 +16,14 @@
 			</h2>
 
 			<p style="color: #868686; font-size:12px; margin-bottom: 8px;">
-				<%= form.area %>駅
+				<%= form.area.area_name %>駅
 			</p>
 
 			<div style="color: #212529; font-weight: 700; margin-top: 8px; font-size: 16px">
-				サ活報告数8件
+				サ活報告数
+				<% count = Report.where(sauna_id: form.id).count %>
+				<%= count %>
+				件
 			</div>
 
 			<div style="width: 100%; height: 200px; margin-right: 16px;">
@@ -30,25 +33,27 @@
 				<div style="height: 56px; display: flex; margin-top: 8px;">
 					<div class="sauna_box">
 						<div class="box_content content_top">
-							サウナ
+							サウナ平均
 						</div>
 						<div class="box_content content_bottom">
-							<% unless form.man_sauna_temp.nil? then %>
-							<%= form.man_sauna_temp %>度
+							<% unless count == 0 then %>
+								<%= point_s = Report.where(sauna_id: form.id).average(:sauna_rate).to_i %>
+								点
 							<% else %>
-							-
+								-
 							<% end %>
 						</div>
 					</div>
 					<div class="water_box">
 						<div class="box_content content_top">
-							水風呂
+							水風呂平均
 						</div>
 						<div class="box_content content_bottom">
-							<% unless form.man_water_temp.nil? then %>
-							<%= form.man_water_temp %>度
+							<% unless count == 0 then %>
+								<%= point_w = Report.where(sauna_id: form.id).average(:water_bath_rate).to_i %>
+								点
 							<% else %>
-							-
+								-
 							<% end %>
 						</div>
 					</div>
@@ -57,3 +62,5 @@
 		</div>
 	<% end %>
 <% end %>
+
+<%= paginate sauna %>

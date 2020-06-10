@@ -1,12 +1,16 @@
+<% if alert %>
+  <div class="alert alert-danger" role="alart">
+    ログインに失敗しました
+  <% @saunner.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+    入力内容を再度ご確認下さい。
+  </div>
+<% end %>
 <h2 id="form-logo">
-  <a href="#"><%= image_tag 'logo.png', height: '135', width: '240' %></a>
+  <a href="<%= root_path %>"><%= image_tag 'logo.png', height: '135', width: '240' %></a>
 </h2>
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <% if alert %>
-        <div class="alert alert-danger" role="alart">
-          ログインに失敗しました
-        </div>
-      <% end %>
+  <%= form_for(@saunner, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-container">
       <div class="form-group">
         <%= f.label :email, "メールアドレス", class: "form-label" %>

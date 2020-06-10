@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_04_080724) do
+ActiveRecord::Schema.define(version: 2020_06_09_093530) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -33,10 +33,31 @@ ActiveRecord::Schema.define(version: 2020_06_04_080724) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "areas", force: :cascade do |t|
+    t.string "area_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "sauna_id", null: false
+    t.index ["sauna_id"], name: "index_areas_on_sauna_id"
+  end
+
+  create_table "reports", force: :cascade do |t|
+    t.integer "sauna_rate"
+    t.integer "water_bath_rate"
+    t.string "title"
+    t.text "comment"
+    t.string "sakatsu_photo"
+    t.integer "saunner_id", null: false
+    t.integer "sauna_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["sauna_id"], name: "index_reports_on_sauna_id"
+    t.index ["saunner_id"], name: "index_reports_on_saunner_id"
+  end
+
   create_table "saunas", force: :cascade do |t|
     t.string "sauna_name"
     t.string "picture"
-    t.string "area"
     t.string "address"
     t.string "business_hours"
     t.string "phone"
@@ -66,4 +87,7 @@ ActiveRecord::Schema.define(version: 2020_06_04_080724) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "areas", "saunas"
+  add_foreign_key "reports", "saunas"
+  add_foreign_key "reports", "saunners"
 end

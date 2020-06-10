@@ -1,0 +1,23 @@
+<div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModal3Label" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header" style="background: #1C75BC;">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" style="color: #FFFFFF;">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="padding: 40px 24px;">
+		<h5 class="modal-title" id="exampleModal3Label" style="padding-bottom: 15px; text-align: center; font-size: 24px; color: #212529;">ログインが必要です</h5>
+		<div class="color: #212529; padding-bottom: 17px;">
+			サービスをご利用いただくためにはログインが必要です。<br>
+			以下からログインを行ってください。<br>
+			アカウントをまだお持ちではない方は、新規会員登録（無料）を行ってください。
+		</div>
+      </div>
+      <div class="modal-footer">
+        <%= link_to "ログイン", new_saunner_session_path, class: "btn btn-primary blue-btn" %>
+        <%= link_to "無料登録", new_saunner_registration_path, class: "btn btn-primary orange-btn" %>
+      </div>
+    </div>
+  </div>
+</div>

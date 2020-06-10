@@ -17,37 +17,57 @@
   <body>
     <div id="PC">
     </div>
-    <div id="not_PC">
+    <div id="Others">
       <header>
         <% if saunner_signed_in? %>
           <nav id="login-nav">
+              <%= link_to(root_path) do %>
+                <%= image_tag 'logo_side_white.png', height: '32', width: '114.63', style: "display: block; margin-right: auto; margin-left: 16px; margin-top: 20px; margin-bottom: 20px;"%>
+              <% end %>
+            <div class="nav-content">
+              <%= link_to "施設を追加", new_sauna_path, class: "btn btn-primary f-1 orange-btn", data: {"turbolinks" => false} %>
+              <% if current_saunner.saunner_image.attached?  %>
+                <%= link_to(saunner_path(current_saunner)) do %>
+                  <%= image_tag current_saunner.saunner_image, style: "height: 100%; width: 32px; border-radius: 50%; object-fit: cover;" %>
+                <% end %>
+              <% else %>
+                <%= link_to "", saunner_path(current_saunner), style: "font-size: 32px;",class: "fas fa-user-circle f-2" %>
+              <% end %>
+            </div>
           </nav>
         <% else %>
           <div id="blue-line"></div>
           <nav id="not-login-nav">
             <div class="nav-content">
               <%= link_to "ログイン", new_saunner_session_path, class: "btn btn-primary f-1 blue-btn" %>
-              <%= link_to "無料登録", new_saunner_registration_path, class: "btn btn-primary f-1 orange-btn" %>
+              <%= link_to "無料登録", new_saunner_registration_path, class: "btn btn-primary f-2 orange-btn" %>
             </div>
           </nav>
         <% end %>
       </header>
+      <% unless notice.nil? then %>
+        <div class="alert alert-info" style="margin-bottom: 0px;" role="alert"><%= notice %></div>
+      <% end %>
       <%= yield %>
       <!-- footer -->
       <footer id="footer">
         <div id="sns-box">
-          <a class="fab fa-twitter f-1" href="#"></a>
-          <a class="fab fa-instagram f-2" href="#"></a>
+          <a class="fab fa-twitter f-1" href="https://twitter.com/__ideguchi"></a>
+          <a class="fab fa-facebook-f f-4" href="https://www.facebook.com/profile.php?id=100028198952133"></a>
+          <a class="fab fa-instagram f-4" href="https://www.instagram.com/_ideguchi/"></a>
+          <a class="fab fa-github f-2" href="https://github.com/idefumi"></a>
         </div>
         <div id="content-1">
-          <a class="btn btn-primary f-1 orange-btn" href="#">利用規約</a>
+          <%= link_to '利用規約', service_policy_path, class: "btn btn-primary f-1 orange-btn" %>
           <a class="btn btn-primary f-2 orange-btn" href="#">ご意見・ご要望</a>
         </div>
         <div id="content-1">
-          <a class="btn btn-primary f-3 orange-btn" href="#">プラバシーポリシー</a>
+          <%= link_to 'プライバシーポリシー', privacy_policy_path, class: "btn btn-primary f-3 orange-btn" %>
         </div>
         <div id="footer-logo">
-          <a href="#"><%= image_tag 'logo_white.png', height: '124.59', width: '206.22' %></a>
+          <%= link_to(root_path) do %>
+            <%= image_tag 'logo_white.png', height: '124.59', width: '206.22' %>
+          <% end %>
         </div>
       </footer>
     </div>

@@ -1,7 +1,3 @@
-<% unless notice.nil? then %>
-  <div class="alert alert-info" style="margin-bottom: 0px;" role="alert"><%= notice %></div>
-<% end %>
-
 <div id="spot_top_photo" class="w-100">
   <%= image_tag @sauna.picture, class: "spot_photo" %>
 </div>
@@ -11,11 +7,16 @@
 </h2>
 
 <p style="color: #868686; font-size:12px; padding-top: 8px; padding-left:16px;">
-	<%= @sauna.area %>駅
+	<%= @sauna.area.area_name %>駅
 </p>
 
-<%= link_to "サ活を報告する", new_saunner_session_path, class: "btn btn-primary orange-btn", style: "font-weight: 700; margin-left: 16px; margin-top: 6px;"%>
-
+<% if saunner_signed_in? %>
+  <%= link_to "サ活を記録する", new_sauna_report_path(@sauna), class: "btn btn-primary orange-btn", style: "font-weight: 700; margin-left: 16px; margin-top: 6px;", data: {"turbolinks" => false}%>
+<% else %>
+  <div class= "btn btn-primary orange-btn" style= "font-weight: 700; margin-left: 16px; margin-top: 6px;" data-toggle="modal" data-target="#exampleModal3">
+    サ活を記録する
+  </div>
+<% end %>
 
 
 <% if @sauna.man_not_exist == false %>
@@ -92,7 +93,7 @@
         住所
       </div>
       <div class="content us" style="word-wrap: break-word;">
-        <% unless @sauna.address.empty? then %>
+        <% unless @sauna.address.blank? then %>
           <%= @sauna.address %>
         <% else %>
           施設情報の更新にご協力お願いいたします。
@@ -105,7 +106,7 @@
         TEL
       </div>
       <div class="content us" style="word-wrap: break-word;">
-        <% unless @sauna.phone.empty? then %>
+        <% unless @sauna.phone.blank? then %>
           <%= @sauna.phone %>
         <% else %>
           施設情報の更新にご協力お願いいたします。
@@ -118,7 +119,7 @@
         営業時間
       </div>
       <div class="content us" style="word-wrap: break-word;">
-        <% unless @sauna.business_hours.empty? then %>
+        <% unless @sauna.business_hours.blank? then %>
           <%= @sauna.business_hours %>
         <% else %>
           施設情報の更新にご協力お願いいたします。
@@ -128,64 +129,102 @@
   </div>
 </div>
 
-<div style="margin: 16px auto; width: 178px; height:38px;">
-  <%= link_to "この施設情報を更新する", edit_sauna_path(@sauna), class: "btn btn-default orange-btn", style: "font-weight: 700;"%>
-</div>
-
-<div class="sakatsu-box">
-  <%# <% if @sakatsu.index(form) == 0 %>
-  <div style="font-weight: 700; font-size:16px; margin-bottom: 16px;">
-    新着サ活報告
+<% if saunner_signed_in? %>
+  <div style="margin: 16px auto; width: 178px; height:38px;">
+    <%= link_to "この施設情報を更新する", edit_sauna_path(@sauna), class: "btn btn-default orange-btn", style: "font-weight: 700;", data: {"turbolinks" => false}%>
   </div>
-  <%# <% end %>
-
-  <div class="profile">
-    <div class="saunner-image">
-    </div>
-    <div class="saunner-name">
-       ふみふみ
+<% else %>
+  <div style="margin: 16px auto; width: 178px; height:38px;">
+    <div class= "btn btn-default orange-btn" style= "font-weight: 700;" type="button" data-toggle="modal" data-target="#exampleModal3">
+      この施設情報を更新する
     </div>
   </div>
+<% end %>
 
-  <div style="font-size:12px; padding-top: 8px;">
-	  渋谷駅
-  </div>
-
-  <h3 style="font-weight: 700; font-size: 18px; padding-top: 8px;">
-	  改良湯
-  </h3>
-
-  <div class="sauna_water_container">
-    <div class="sauna_box">
-      <div class="box_content content_top">
-        サウナ
+<% if @reports.blank? %>
+	<div style="height: 350px; font-weight: 700; font-size: 18px; margin: 16px;">
+		まだサ活の報告がありません。
+	</div>
+<% else %>
+  <% @reports.each do |f| %>
+    <div class="sakatsu-box">
+      <% if @reports.index(f) == 0 %>
+      <div style="font-weight: 700; font-size:16px; margin-bottom: 16px;">
+        新着サ活報告
       </div>
-      <div class="box_content content_bottom">
-        80点
+      <% end %>
+
+      <% if saunner_signed_in? %>
+        <%= link_to(saunner_path(f.saunner_id)) do %>
+          <div class="profile">
+            <div class="saunner-image">
+              <% if f.saunner.saunner_image.attached? %>
+                <%= image_tag f.saunner.saunner_image, class: "saunner-photo-profile-report" %>
+              <% end %>
+            </div>
+            <div class="saunner-name">
+              <%= f.saunner.user_name %>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+          <div type="button" class="profile" data-toggle="modal" data-target="#exampleModal3">
+            <div class="saunner-image">
+              <% if f.saunner.saunner_image.attached? %>
+                <%= image_tag f.saunner.saunner_image, class: "saunner-photo-profile-report" %>
+              <% end %>
+            </div>
+            <div class="saunner-name">
+              <%= f.saunner.user_name %>
+            </div>
+          </div>
+          <%= render 'modal' %>
+      <% end %>
+
+      <div style="font-size:12px; padding-top: 8px;">
+        <%= @areas.find_by(sauna_id: f.sauna_id).area_name %>
       </div>
+
+      <h3 style="font-weight: 700; font-size: 18px; padding-top: 8px;">
+        <%= f.sauna.sauna_name %>
+      </h3>
+
+      <div class="sauna_water_container">
+        <div class="sauna_box">
+          <div class="box_content content_top">
+            サウナ
+          </div>
+          <div class="box_content content_bottom">
+            <%= f.sauna_rate %>点
+          </div>
+        </div>
+        <div class="water_box">
+          <div class="box_content content_top">
+            水風呂
+          </div>
+          <div class="box_content content_bottom">
+            <%= f.water_bath_rate %>点
+          </div>
+        </div>
+      </div>
+
+      <div class="comment-title">
+        <%= f.title %>
+      </div>
+
+      <% unless f.comment.blank? then %>
+        <div class="comment">
+          <%= f.comment %>
+        </div>
+      <% end %>
+
+      <% if f.sakatsu_photo.attached? %>
+        <div class="sakatsu-top-photo w-100">
+          <%= image_tag f.sakatsu_photo, class: "sakatsu-photo" %>
+        </div>
+      <% end %>
     </div>
-    <div class="water_box">
-      <div class="box_content content_top">
-        水風呂
-      </div>
-      <div class="box_content content_bottom">
-        80点
-      </div>
-    </div>
-  </div>
+  <% end %>
+<% end %>
 
-  <div class="comment-title">
-    ととのいました。
-  </div>
-
-  <div class="comment">
-    1週間に1回はいくようにしています。
-    水風呂がキンキンに冷えているので、休憩の時に完全に飛ぶことができます。
-    最近人が増えてサウナに行列ができ気味です。
-  </div>
-
-  <div class="sakatsu-top-photo w-100">
-    <%= image_tag 'test.jpg', class: "sakatsu-photo" %>
-  </div>
-
-</div>
+<%= paginate @reports %>
