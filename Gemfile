@@ -12,6 +12,7 @@ gem 'image_processing', '~> 1.2'
 gem 'rails-i18n'
 gem 'pry-rails'
 gem 'kaminari'
+gem 'font_awesome5_rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.1'
