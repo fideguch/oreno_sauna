@@ -2,7 +2,7 @@
   <% if @sauna.picture.attached? %>
     <%= image_tag @sauna.picture, class: "spot_photo" %>
   <% else %>
-    <%= image_tag 'noimage.png', height: '240', style: "object-fit: cover; width: 100%;"%>
+    <%= image_tag "noimage.png" , height: '240', style: "object-fit: cover; width: 100%;"%>
   <% end %>
 </div>
 
