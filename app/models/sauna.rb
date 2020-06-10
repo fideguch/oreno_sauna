@@ -1,17 +1,17 @@
 class Sauna < ApplicationRecord
 	default_scope -> { order(created_at: :desc) }
 
-	before_create :default_picture
+	# before_create :default_picture
 	has_one_attached :picture
 
 	include SearchFacility
 
 	# photoのデフォルト画像を設定
-	def default_picture
-		if !self.picture.attached?
-			self.picture.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'noimage.png')), filename: 'noimage.png', content_type: 'image/png')
-		end
-	end
+	# def default_picture
+	# 	if !self.picture.attached?
+	# 		self.picture.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'noimage.png')), filename: 'noimage.png', content_type: 'image/png')
+	# 	end
+	# end
 
 	#saunaモデルのveiwからreportのデータにアクセスする際に必要。
 	has_many :report

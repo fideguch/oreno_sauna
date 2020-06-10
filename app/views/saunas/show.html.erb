@@ -1,5 +1,9 @@
 <div id="spot_top_photo" class="w-100">
-  <%= image_tag @sauna.picture, class: "spot_photo" %>
+  <% if @sauna.picture.attached? %>
+    <%= image_tag @sauna.picture, class: "spot_photo" %>
+  <% else %>
+    <%= image_tag 'noimage.png', height: '240', style: "object-fit: cover; width: 100%;"%>
+  <% end %>
 </div>
 
 <h2 style="font-weight: 700; font-size:24px; padding-top: 16px; padding-left:16px;">
