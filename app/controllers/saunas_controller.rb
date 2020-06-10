@@ -80,7 +80,7 @@ class SaunasController < ApplicationController
 
   def search_name
     @sauna = Sauna.page(params[:page]).per(SEARCHPER)
-    @areas = Area.all
+    @areas = Area.select(:area_name).distinct(:area_name)
     @reports = Report.all
     if params[:name_query].present?
       @sauna = @sauna.search_sauna(facility_name_query: params[:name_query])
