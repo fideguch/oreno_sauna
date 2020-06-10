@@ -16,6 +16,10 @@
 
   <body>
     <div id="PC">
+      <%= image_tag 'logo.png', height: '135', width: '240', style: "display: block; margin: 80px auto 0 auto;"%>
+      <div style="text-align: center; font-weight: 700; margin: 80px auto 0 auto;">
+        俺のサウナ はスマートフォン限定のコンテンツです。 <br>お使いのスマートフォンで上記のQRコードを読み取り、アクセスして下さい。
+      </div>
     </div>
     <div id="Others">
       <header>
@@ -59,7 +63,7 @@
         </div>
         <div id="content-1">
           <%= link_to '利用規約', service_policy_path, class: "btn btn-primary f-1 orange-btn" %>
-          <a class="btn btn-primary f-2 orange-btn" href="#">ご意見・ご要望</a>
+          <a class="btn btn-primary f-2 orange-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSd_Utfm_4ppAUUGe9niT5Qp59t5Ijcg0uK473GscE6hK-rxkg/viewform?usp=sf_link">ご意見・ご要望</a>
         </div>
         <div id="content-1">
           <%= link_to 'プライバシーポリシー', privacy_policy_path, class: "btn btn-primary f-3 orange-btn" %>

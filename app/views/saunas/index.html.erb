@@ -9,6 +9,7 @@
 			<input type="text" style="margin-right: 8px;" class="form-control" placeholder="施設名を入力" type="text" name="name_query" value="<% request[:name_query] %>">
 			<button class="btn btn-primary orange-btn" type="submit">検索</button>
 		</form>
+		<%= link_to 'サウナ一覧を見る', search_facility_path, class: "btn btn-primary orange-btn", style: "margin-top: 8px;" %>
 	</div>
 	<%= render 'guide'%>
 
@@ -19,7 +20,7 @@
 		</div>
 	</header>
 	<%= render 'guide'%>
-	<%= render 'search_by_station'%>
+	<%= render 'search_by_station' %>
 
 <% end %>
 
