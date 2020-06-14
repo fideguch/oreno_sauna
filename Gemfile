@@ -14,6 +14,7 @@ gem 'pry-rails'
 gem 'kaminari'
 gem 'font_awesome5_rails'
 gem 'meta-tags'
+gem 'aws-sdk-s3', require: false
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.1'
