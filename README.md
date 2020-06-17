@@ -45,13 +45,13 @@ Heroku / AWS S3
 -仮想環境 | 
 Vagrant / Virtual Box / 仮想マシン CentOS7系
 -使用したgem | 
-kaminari（ページング機能）
-jquery-rails（フロントでのjQueryの使用）
-bootstrap(フロントエンドのライブラリ）
-devise（ユーザー管理機能）
-active_storage（画像アプロード機能）
-image_processing（画像の大きさ編集機能）
-font_awesome5_rails（アイコンの使用）
-aws-sdk-s3（投稿画像の永続化のため）
-meta-tags（SNSのOGPの画像、ファビコンなど）
-rails-i18n（バリデーションによるエラーメッセージや、その他フラッシュメッセージの日本語化）
+- kaminari（ページング機能）
+- jquery-rails（フロントでのjQueryの使用）
+- bootstrap(フロントエンドのライブラリ）
+- devise（ユーザー管理機能）
+- active_storage（画像アプロード機能）
+- image_processing（画像の大きさ編集機能）
+- font_awesome5_rails（アイコンの使用）
+- aws-sdk-s3（投稿画像の永続化のため）
+- meta-tags（SNSのOGPの画像、ファビコンなど）
+- rails-i18n（バリデーションによるエラーメッセージや、その他フラッシュメッセージの日本語化）
