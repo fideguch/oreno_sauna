@@ -42,9 +42,9 @@ puma 3.12.4
 Git
 - 公開用プラットフォーム | 
 Heroku / AWS S3
--仮想環境 | 
+- 仮想環境 | 
 Vagrant / Virtual Box / 仮想マシン CentOS7系
--使用したgem | 
+- 使用したgem | 
 - kaminari（ページング機能）
 - jquery-rails（フロントでのjQueryの使用）
 - bootstrap(フロントエンドのライブラリ）
