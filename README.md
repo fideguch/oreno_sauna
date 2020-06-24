@@ -1,5 +1,8 @@
 # README
 
+・本番環境
+ - https://oreno-sauna.herokuapp.com/
+
 ・テストログイン用ID、パスワード
 - ID | 
 test@example.com
