@@ -1,24 +1,42 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+・本番環境
 
-Things you may want to cover:
+https://oreno-sauna.herokuapp.com/
+・テストログイン用ID、パスワード
 
-* Ruby version
+ID | test@example.com
+パスワード | test1111
+・「俺のサウナ」の概要
 
-* System dependencies
+概要 | サウナー（※ユーザー）がサウナの体験記を記録するためのサ活記録アプリ。
+目的 | サウナ好きなユーザーが作り上げるサウナコミュニティ。 施設の情報をサウナーが集める。 サウナー達それぞれのサウナの評価、サウナー全体のサウナの評価の平均などが見れる。 ログインしなくても行きたいサウナを見つけられる。
+・「俺のサウナ」の機能一覧
 
-* Configuration
+施設検索機能 | 施設名を部分一致でサウナを検索できる。
+最寄駅検索機能 | 施設に付随して保存されている最寄駅名でサウナを検索できる。
+サ活投稿、削除機能。 | サウナーが自分のサウナでの体験記を記録できる。マイページから削除も行える。
+施設登録、編集機能 | アプリ内にサウナが見つからない場合、サウナを新しく登録できる。また、サウナの個別ページからいつでも編集を行える。
+ログイン機能 | 施設登録や、サ活を記録してもらうためにログイン機能を設ける。
+プロフィールページ | サウナーのアイコン画像、ユーザー名の編集、また、投稿したサ活の削除などが行える。
+・「俺のサウナ」で使用してる技術一覧
 
-* Database creation
+フロントエンド | HTML / CSS / jQuery
+サーバーサイド | Ruby 2.6.5 / Rails 6.0.3
+DB | PostgreSQL
+Webサーバー | puma 3.12.4
+バージョン管理 | Git
+公開用プラットフォーム | Heroku / AWS S3
+仮想環境 | Vagrant / Virtual Box / 仮想マシン CentOS7系
+・使用したgem
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+kaminari（ページング機能）
+jquery-rails（フロントでのjQueryの使用）
+bootstrap(フロントエンドのライブラリ）
+devise（ユーザー管理機能）
+active_storage（画像アプロード機能）
+image_processing（画像の大きさ編集機能）
+font_awesome5_rails（アイコンの使用）
+aws-sdk-s3（投稿画像の永続化のため）
+meta-tags（SNSのOGPの画像、ファビコンなど）
+rails-i18n（バリデーションによるエラーメッセージや、その他フラッシュメッセージの日本語化）

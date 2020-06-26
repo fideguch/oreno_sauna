@@ -161,11 +161,12 @@
       <% if saunner_signed_in? %>
         <%= link_to(saunner_path(f.saunner_id)) do %>
           <div class="profile">
-            <div class="saunner-image">
               <% if f.saunner.saunner_image.attached? %>
                 <%= image_tag f.saunner.saunner_image, class: "saunner-photo-profile-report" %>
+              <% else %>
+                <div class="saunner-image">
+                </div>
               <% end %>
-            </div>
             <div class="saunner-name">
               <%= f.saunner.user_name %>
             </div>
