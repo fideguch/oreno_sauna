@@ -1,7 +1,7 @@
 <% if @sauna.picture.attached? %>
-  <% set_meta_tags title: @sauna.sauna_name + "｜" + "俺のサウナ", og: {image: @sauna.picture} %>
+  <% set_meta_tags title: @sauna.sauna_name, og: {image: @sauna.picture} %>
 <% else %>
-  <% set_meta_tags title: @sauna.sauna_name + "｜" + "俺のサウナ" %>
+  <% set_meta_tags title: @sauna.sauna_name %>
 <% end %>
 
 <div id="spot_top_photo" class="w-100">
