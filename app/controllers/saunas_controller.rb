@@ -15,6 +15,9 @@ class SaunasController < ApplicationController
   # GET /saunas/1
   # GET /saunas/1.json
   def show
+    if @sauna.picture.attached?
+      @twitter_card = @sauna.picture.variant(resize:"1200x630^",crop:"1200x630+0+0",gravity: :center)
+    end
     @reports = Report.where(sauna_id: @sauna.id).page(params[:page]).per(SHOWPER)
     @areas = Area.where(sauna_id: @sauna.id)
   end

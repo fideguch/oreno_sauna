@@ -1,5 +1,5 @@
 <% if @sauna.picture.attached? %>
-  <% set_meta_tags title: @sauna.sauna_name , og: {image: @sauna.picture.variant(resize_to_fill: [1200, 630])} %>
+  <% set_meta_tags title: @sauna.sauna_name , og: {image: @twitter_card} %>
 <% else %>
   <% set_meta_tags title: @sauna.sauna_name %>
 <% end %>
