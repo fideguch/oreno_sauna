@@ -1,3 +1,9 @@
+<% if @sauna.picture.attached? %>
+  <% set_meta_tags title: @sauna.sauna_name + "｜" + "俺のサウナ", og: {image: @sauna.picture} %>
+<% else %>
+  <% set_meta_tags title: @sauna.sauna_name + "｜" + "俺のサウナ" %>
+<% end %>
+
 <div id="spot_top_photo" class="w-100">
   <% if @sauna.picture.attached? %>
     <%= image_tag @sauna.picture, class: "spot_photo" %>
