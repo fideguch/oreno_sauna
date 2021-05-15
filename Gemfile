@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.5'
+ruby '2.6.6'
 
 gem 'sass-rails', '>= 6'
 gem 'jquery-rails'
@@ -19,8 +19,10 @@ gem 'aws-sdk-s3', require: false
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.1'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.4', group: :development
-gem 'pg', group: :production
+gem 'mysql2'
+# DBはMySQLで統一するので以下をコメントアウト
+# gem 'sqlite3', '~> 1.4', group: :development
+# gem 'pg', group: :production
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets

@@ -1,0 +1,46 @@
+version: '3'
+
+services:
+ app:
+  hostname: app_server
+  build:
+   context: .
+   dockerfile: app.Dockerfile
+  env_file:
+   - ./environments/db.env
+  command: bundle exec puma -C config/puma.rb
+  tty: true
+  stdin_open: true
+  volumes:
+   - .:/oreno_sauna
+   - public-data:/oreno_sauna/public
+   - tmp-data:/oreno_sauna/tmp
+   - log-data:/oreno_sauna/log
+  depends_on:
+   - db
+
+ db:
+  hostname: db_server
+  image: mysql:8.0
+  env_file:
+   - ./environments/db.env
+  volumes:
+   - db-data:/var/lib/mysql
+
+ web:
+  build:
+   context: ./containers/nginx
+   dockerfile: nginx.Dockerfile
+  volumes:
+   - public-data:/oreno_sauna/public
+   - tmp-data:/oreno_sauna/tmp
+  ports:
+   - 80:80
+  depends_on:
+   - app
+
+volumes:
+ public-data:
+ tmp-data:
+ log-data:
+ db-data:

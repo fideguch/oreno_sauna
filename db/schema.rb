@@ -12,17 +12,17 @@
 
 ActiveRecord::Schema.define(version: 2020_06_09_093530) do
 
-  create_table "active_storage_attachments", force: :cascade do |t|
+  create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
-    t.integer "record_id", null: false
-    t.integer "blob_id", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
-  create_table "active_storage_blobs", force: :cascade do |t|
+  create_table "active_storage_blobs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "key", null: false
     t.string "filename", null: false
     t.string "content_type"
@@ -33,29 +33,29 @@ ActiveRecord::Schema.define(version: 2020_06_09_093530) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "areas", force: :cascade do |t|
+  create_table "areas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "area_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "sauna_id", null: false
+    t.bigint "sauna_id", null: false
     t.index ["sauna_id"], name: "index_areas_on_sauna_id"
   end
 
-  create_table "reports", force: :cascade do |t|
+  create_table "reports", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.integer "sauna_rate"
     t.integer "water_bath_rate"
     t.string "title"
     t.text "comment"
     t.string "sakatsu_photo"
-    t.integer "saunner_id", null: false
-    t.integer "sauna_id", null: false
+    t.bigint "saunner_id", null: false
+    t.bigint "sauna_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["sauna_id"], name: "index_reports_on_sauna_id"
     t.index ["saunner_id"], name: "index_reports_on_saunner_id"
   end
 
-  create_table "saunas", force: :cascade do |t|
+  create_table "saunas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "sauna_name"
     t.string "picture"
     t.string "address"
@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(version: 2020_06_09_093530) do
     t.index ["sauna_name"], name: "index_saunas_on_sauna_name", unique: true
   end
 
-  create_table "saunners", force: :cascade do |t|
+  create_table "saunners", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
