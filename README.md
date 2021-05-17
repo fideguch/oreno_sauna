@@ -2,7 +2,7 @@
 
 ・本番環境
 
-https://oreno-sauna.herokuapp.com/
+http://35.74.133.140
 ・テストログイン用ID、パスワード
 
 ID | test@example.com
