@@ -7,6 +7,7 @@ class Saunner < ApplicationRecord
   default_scope -> { order(created_at: :desc) }
 
   has_one_attached :saunner_image
+
   has_many :report
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
