@@ -7,8 +7,12 @@ services:
    context: .
    dockerfile: app.Dockerfile
   env_file:
-   - ./environments/db.env
-  command: bundle exec puma -C config/puma.rb
+# ========ローカルと本番切り替え==========
+#   - ./environments/db.env
+#  command: bundle exec puma -C config/puma.rb
+   - ./environments/production_db.env
+  command: bundle exec puma -C config/puma.rb -e production
+# ========================================
   tty: true
   stdin_open: true
   volumes:
@@ -16,16 +20,18 @@ services:
    - public-data:/oreno_sauna/public
    - tmp-data:/oreno_sauna/tmp
    - log-data:/oreno_sauna/log
-  depends_on:
-   - db
+# ========ローカルと本番切り替え==========
+#  depends_on:
+#   - db
 
- db:
-  hostname: db_server
-  image: mysql:8.0
-  env_file:
-   - ./environments/db.env
-  volumes:
-   - db-data:/var/lib/mysql
+# db:
+#  hostname: db_server
+#  image: mysql:8.0
+#  env_file:
+#   - ./environments/db.env
+#  volumes:
+#   - db-data:/var/lib/mysql
+# ========================================
 
  web:
   build:

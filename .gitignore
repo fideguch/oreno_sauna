@@ -41,4 +41,5 @@ yarn-debug.log*
 .yarn-integrity
 
 # MySQLのログイン情報
-/environments/db.env
+/environments/*
+/db/grant_user.sql

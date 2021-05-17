@@ -15,7 +15,11 @@ test:
   database: test_oreno_sauna
 
 production:
-  <<: *default
-  adapter: postgresql
-  encoding: unicode
-  pool: 5
+  database: <%= ENV.fetch('MYSQL_DATBASE') { 'db-name' } %>
+  adapter: mysql2
+  encodeing: utf8mb4
+  charset: utf8mb4
+  collation: utf8mb4_general_ci
+  host: <%= ENV.fetch('MYSQL_HOST') { 'host-name' } %>
+  username: <%= ENV.fetch('MYSQL_USERNAME') { 'username' } %>
+  password: <%= ENV.fetch('MYSQL_PASSWORD') { 'password' } %>
