@@ -10,7 +10,7 @@ services:
 # ========ローカルと本番切り替え==========
 #   - ./environments/db.env
 #  command: bundle exec puma -C config/puma.rb
-   - ./environments/production_db.env
+   - production_db.env
   command: bundle exec puma -C config/puma.rb -e production
 # ========================================
   tty: true
